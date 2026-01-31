@@ -52,8 +52,8 @@ Home Assistant integration for tracking shipments from popular carriers in Polan
 
 ### Manual install
 
-1. Copy `custom_components/shipment_tracking` into:
-   `<config>/custom_components/shipment_tracking`
+1. Copy `custom_components/polish_shipment_tracking` into:
+   `<config>/custom_components/polish_shipment_tracking`
 2. Restart Home Assistant.
 
 ## Configuration
@@ -105,7 +105,7 @@ Enable debug logs:
 logger:
   default: info
   logs:
-    custom_components.shipment_tracking: debug
+    custom_components.polish_shipment_tracking: debug
 ```
 
 ## Known issues

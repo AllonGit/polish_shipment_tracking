@@ -52,8 +52,8 @@ Integracja dla Home Assistant do śledzenia przesyłek u popularnych przewoźnik
 
 ### Instalacja ręczna
 
-1. Skopiuj katalog `custom_components/shipment_tracking` do:
-   `<config>/custom_components/shipment_tracking`
+1. Skopiuj katalog `custom_components/polish_shipment_tracking` do:
+   `<config>/custom_components/polish_shipment_tracking`
 2. Zrestartuj Home Assistant.
 
 ## Konfiguracja
@@ -105,7 +105,7 @@ Możesz włączyć debug logi dla integracji:
 logger:
   default: info
   logs:
-    custom_components.shipment_tracking: debug
+    custom_components.polish_shipment_tracking: debug
 ```
 
 ## Znane problemy
