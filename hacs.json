@@ -1,12 +1,5 @@
 {
-  "domain": "polish_shipment_tracking",
   "name": "Polish Shipment Tracking",
-  "codeowners": ["@stirante"],
-  "config_flow": true,
-  "documentation": "https://github.com/stirante/polish-shipment-tracking",
-  "iot_class": "cloud_polling",
-  "requirements": [],
-  "version": "1.0.0",
   "homeassistant": "2024.6.0",
   "hacs": "1.30.0",
   "persistent_directory": "polish_shipment_tracking_data",

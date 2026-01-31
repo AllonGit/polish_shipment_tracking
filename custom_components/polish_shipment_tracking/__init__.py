@@ -1,6 +1,7 @@
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, CoreState, EVENT_HOMEASSISTANT_STARTED
 from homeassistant.helpers import entity_registry as er
+from homeassistant.helpers import config_validation as cv
 from homeassistant.components import websocket_api
 import voluptuous as vol
 
@@ -8,6 +9,8 @@ from .const import DOMAIN, PLATFORMS, INTEGRATION_VERSION
 from .frontend import JSModuleRegistration
 from .coordinator import ShipmentCoordinator
 from .sensor import ShipmentSensor, _pick_pocztex_id, _pick_pocztex_status, _normalize_status
+
+CONFIG_SCHEMA = cv.config_entry_only_config_schema(DOMAIN)
 
 async def async_setup(hass: HomeAssistant, config: dict):
     """Set up the Shipment Tracking integration and register frontend resources."""
