@@ -1,9 +1,9 @@
 {
-  "domain": "shipment_tracking",
+  "domain": "polish_shipment_tracking",
   "name": "Polish Shipment Tracking",
   "version": "1.0.0",
-  "documentation": "https://github.com/stirante/polish-shipment-tracking-home-assistant",
-  "issue_tracker": "https://github.com/stirante/polish-shipment-tracking-home-assistant/issues",
+  "documentation": "https://github.com/stirante/polish-shipment-tracking",
+  "issue_tracker": "https://github.com/stirante/polish-shipment-tracking/issues",
   "dependencies": [
     "frontend",
     "http"
