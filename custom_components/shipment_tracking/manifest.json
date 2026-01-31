@@ -1,0 +1,15 @@
+{
+  "domain": "shipment_tracking",
+  "name": "Polish Shipment Tracking",
+  "version": "1.0.0",
+  "documentation": "https://github.com/stirante/polish-shipment-tracking-home-assistant",
+  "issue_tracker": "https://github.com/stirante/polish-shipment-tracking-home-assistant/issues",
+  "dependencies": [
+    "frontend",
+    "http"
+  ],
+  "codeowners": ["@stirante"],
+  "requirements": ["aiohttp>=3.9.0", "voluptuous>=0.13.1"],
+  "config_flow": true,
+  "iot_class": "cloud_polling"
+}

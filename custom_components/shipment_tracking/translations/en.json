@@ -1,0 +1,47 @@
+{
+  "title": "Shipment Tracking",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect a courier account",
+        "description": "Choose your courier to continue setup.",
+        "data": {
+          "courier": "Courier"
+        }
+      },
+      "phone": {
+        "title": "Enter phone number",
+        "description": "Enter your phone number to receive an SMS code.",
+        "data": {
+          "phone": "Phone number"
+        }
+      },
+      "pocztex_credentials": {
+        "title": "Sign in to Pocztex",
+        "description": "Enter the email and password for the Pocztex app. For automatic package discovery, add your phone number to your account in the Pocztex Mobile app.",
+        "data": {
+          "email": "Email address",
+          "password": "Password"
+        }
+      },
+      "sms": {
+        "title": "Enter SMS code",
+        "description": "Enter the code sent to {phone}.",
+        "data": {
+          "code": "SMS code"
+        }
+      }
+    },
+    "error": {
+      "auth_error": "Authentication failed. Check your login details and try again.",
+      "invalid_code": "Invalid code. Please try again."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "parcel": {
+        "name": "Parcel"
+      }
+    }
+  }
+}
