@@ -1,9 +1,10 @@
 # Polish Shipment Tracking
 
 English version: [README_EN.md](README_EN.md)
+![Shipment Tracking card](screenshot.png)
+
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-[![Project](https://img.shields.io/badge/GitHub-stirante%2Fpolish__shipment__tracking-black.svg)](https://github.com/stirante/polish_shipment_tracking)
 
 Integracja dla Home Assistant do śledzenia przesyłek u popularnych przewoźników w Polsce. Tworzy encje sensor dla aktywnych przesyłek oraz zawiera kartę Lovelace z listą przesyłek.
 
@@ -94,6 +95,7 @@ Różne nazwy statusów przewoźników są mapowane do wspólnego zestawu. Przyk
 Dokładne mapowania są w kodzie integracji (sensor.py).
 
 ## Karta Lovelace
+
 
 Integracja zawiera kartę Lovelace (JavaScript module) i automatycznie dodaje ją jako zasób w dashboardach.
 

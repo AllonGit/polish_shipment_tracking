@@ -1,9 +1,10 @@
 # Polish Shipment Tracking
 
 Polska wersja: [README.md](README.md)
+![Shipment Tracking card](screenshot.png)
+
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
-[![Project](https://img.shields.io/badge/GitHub-stirante%2Fpolish__shipment__tracking-black.svg)](https://github.com/stirante/polish_shipment_tracking)
 
 Home Assistant integration for tracking shipments from popular carriers in Poland. It creates sensor entities for active shipments and includes a Lovelace card with a list of shipments.
 
@@ -94,6 +95,7 @@ Carrier-specific status names are mapped to a common set, for example:
 See the implementation in the integration code (sensor.py).
 
 ## Lovelace card
+
 
 The integration bundles a Lovelace card (JavaScript module) and will automatically add it to Lovelace Resources.
 
