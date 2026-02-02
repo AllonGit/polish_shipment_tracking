@@ -2,7 +2,7 @@
 
 English version: [README_EN.md](README_EN.md)
 
-![Shipment Tracking card](screenshot.png)
+![Shipment Tracking card](images/screenshot.png)
 
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](LICENSE)
@@ -44,6 +44,12 @@ Integracja dla Home Assistant do śledzenia przesyłek u popularnych przewoźnik
 ## Instalacja
 
 ### Instalacja przez HACS (zalecane)
+
+**Naciśnij przycisk:**
+
+[![Open your Home Assistant instance and open a repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=stirante&repository=polish_shipment_tracking&category=integration)
+
+**LUB:**
 
 1. Otwórz HACS -> Integrations.
 2. Dodaj repo jako Custom repository:
