@@ -87,6 +87,7 @@ class ShipmentTrackingConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                 vol.Required(CONF_PHONE): str,
             }),
             errors=errors,
+            description_placeholders={"courier": self.courier.upper() if self.courier else ""},
         )
 
     async def async_step_pocztex_credentials(self, user_input=None):
