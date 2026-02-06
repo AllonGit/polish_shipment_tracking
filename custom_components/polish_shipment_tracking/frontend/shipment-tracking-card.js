@@ -221,9 +221,11 @@ class ShipmentTrackingCard extends HTMLElement {
     this.titleElement.innerText = title;
   }
 
-  getStatusInfo(state, attributes = {}) {
+  getStatusInfo(stateObj) {
+    const attributes = stateObj?.attributes || {};
     const statusKey = (attributes.status_key || '').toString().toLowerCase();
     const raw = (attributes.status_raw || '').toString();
+    const state = (stateObj?.state || '').toString();
 
     const classMap = {
       delivered: 'status-delivered',
@@ -238,7 +240,17 @@ class ShipmentTrackingCard extends HTMLElement {
     };
 
     const badgeClass = classMap[statusKey] || 'status-pending';
-    const label = state || raw || statusKey || '';
+
+    let label = state || raw || statusKey || '';
+    if (this._hass?.formatEntityState && stateObj) {
+      label = this._hass.formatEntityState(stateObj);
+    } else if (this._hass?.localize && statusKey) {
+      const key = `component.polish_shipment_tracking.entity.sensor.shipment_status.state.${statusKey}`;
+      const localized = this._hass.localize(key);
+      if (localized && localized !== key) {
+        label = localized;
+      }
+    }
 
     return { class: badgeClass, text: label };
   }
@@ -346,7 +358,7 @@ class ShipmentTrackingCard extends HTMLElement {
           iconHtml = `<ha-icon icon="${iconMdi}"></ha-icon>`;
         }
 
-        const statusInfo = this.getStatusInfo(state, attributes);
+        const statusInfo = this.getStatusInfo(stateObj);
         const location = attributes.location || attributes.current_location || '';
         const pickupCode = attributes.open_code || attributes.pickup_code || '';
 
