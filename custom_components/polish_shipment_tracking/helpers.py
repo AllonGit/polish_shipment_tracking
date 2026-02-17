@@ -40,7 +40,22 @@ def get_raw_status(parcel_data: dict, courier: str) -> str | None:
     if courier == "dpd":
         return (parcel_data.get("main_status") or {}).get("status")
     if courier == "dhl":
-        return parcel_data.get("status")
+        status = parcel_data.get("status")
+        status_text = str(status or "").strip()
+        if status_text:
+            status_upper = status_text.upper()
+            # Keep detailed DHL status as primary source.
+            # If a new TT_* code appears and is not mapped yet,
+            # fall back to timeline status (Route/Delivery/etc.).
+            if status_upper in _STATUS_MAP.get("dhl", {}) or not status_upper.startswith("TT_"):
+                return status_text
+
+        timeline = parcel_data.get("menuTimelineLabel")
+        if isinstance(timeline, dict):
+            timeline_status = str(timeline.get("status") or "").strip()
+            if timeline_status:
+                return timeline_status
+        return status_text or None
     if courier == "pocztex":
         return _pick_pocztex_status(parcel_data)
     return None
@@ -160,10 +175,35 @@ _STATUS_MAP = {
         "UNSUCCESSFUL_DELIVERY": "exception",
     },
     "dhl": {
+        "TT_MAG": "in_transport",
+        "TT_EDWP": "in_transport",
+        "TT_DWP_PUNKT": "handed_out_for_delivery",
+        "TT_DWP_INT": "handed_out_for_delivery",
+        "TT_DWP": "handed_out_for_delivery",
+        "TT_MAG_INT": "in_transport",
+        "TT_LK": "waiting_for_pickup",
+        "TT_AWI": "waiting_for_pickup",
+        "TT_OP": "delivered",
+        "TT_DELAY_KUR": "exception",
+        "TT_DELAY_MAG": "exception",
+        "TT_OWL": "exception",
+        "TT_DOR": "delivered",
+        "TT_CS": "in_transport",
+        "TT_ZWN": "returned",
+        "TT_ZGN": "exception",
+        "TT_LIK": "exception",
+        "TT_DOR_ZWN": "returned",
+        "SP_DSP": "in_transport",
+        "TT_PRZEKIERUJ": "in_transport",
+        "SP_CN": "cancelled",
+        "ERR": "exception",
         "NONE": "created",
         "SHIPMENTINPREPARATION": "created",
         "INPREPARATION": "created",
         "WAITINGFORCOURIERPICKUP": "created",
+        "ALLSTATUSES": "in_transport",
+        "INDELIVERY": "handed_out_for_delivery",
+        "ONTHEROAD": "in_transport",
         "POSTED": "in_transport",
         "SENT": "in_transport",
         "POSTEDATPOINT": "in_transport",
@@ -183,10 +223,13 @@ _STATUS_MAP = {
         "RETRIEVEDFROMPOINT": "delivered",
         "RETRIEVEDFROMLOCKER": "delivered",
         "DELIVERED": "delivered",
+        "DELIVEREDTOSENDER": "returned",
+        "RETURNTOSENDER": "returned",
         "ROUTETOSENDER": "returned",
         "PARCELRETURNSTOSENDER": "returned",
         "PARCELRETURNEDTOSENDER": "returned",
         "RETURN": "returned",
+        "RESIGNED": "cancelled",
         "RESIGNATED": "cancelled",
         "ERROR": "exception",
         "DELIVERYDELAY": "exception",

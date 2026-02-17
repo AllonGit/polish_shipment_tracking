@@ -340,7 +340,7 @@ class ShipmentTrackingCard extends HTMLElement {
 
       if (stateObj) {
         const state = stateObj.state;
-        if (state === 'unavailable' || state === 'unknown') return;
+        if (state === 'unavailable') return;
 
         const attributes = stateObj.attributes;
         const friendlyName = attributes.sender || attributes.sender_name || attributes.recipient_name || attributes.tracking_number;
